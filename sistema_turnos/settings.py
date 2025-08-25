@@ -10,15 +10,12 @@ DEBUG = False
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Permitir dominio de Render y localhost
-- DEBUG = False
-+ DEBUG = True
+
 
 ALLOWED_HOSTS = [
     os.environ.get('RENDER_EXTERNAL_HOSTNAME'),
     'localhost',
 ]
-
-+ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
      'django.contrib.admin',
