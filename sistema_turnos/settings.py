@@ -25,8 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ie-iy#z1*-v73jou6vxaza=@+bx7av7d6h!ubte8tco*&*l^w+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+import os
+
 DEBUG = False
-ALLOWED_HOSTS = ['turnos.onrender.com']  # Cambia por el nombre real de tu app
+ALLOWED_HOSTS = [
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME'),  # Detecta tu URL en Render
+    'localhost',
+]
+
 
 
 ALLOWED_HOSTS = []
