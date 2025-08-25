@@ -16,7 +16,13 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    # … tus apps …
+     'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',      # ← Debe estar acá
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'turnos',
 ]
 
 MIDDLEWARE = [
@@ -28,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'sistema_turnos.urls'
