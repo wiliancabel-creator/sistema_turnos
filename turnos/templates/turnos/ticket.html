@@ -1,0 +1,80 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticket de Turno</title>
+  <style>
+    body {
+      font-family: monospace;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ticket {
+      width: 58mm;
+      margin: auto;
+      padding: 10px;
+      border: 1px dashed #000;
+    }
+
+    .titulo {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .numero {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .mensaje {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .wifi {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    /* Ocultar todo excepto el ticket al imprimir */
+    @media print {
+      body * {
+        display: none !important;
+      }
+      .ticket, .ticket * {
+        display: block !important;
+      }
+      .ticket {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 58mm;
+        margin: 0;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body onload="window.print()">
+  <div class="ticket">
+    <div class="titulo">Tu Turno</div>
+    <div class="numero">
+      {% if turno.tipo == 'N' %}🧑‍🦰 Normal{% endif %}
+      {% if turno.tipo == 'E' %}🤰 Embarazada{% endif %}
+      {% if turno.tipo == 'T' %}🧓 Tercera Edad{% endif %}
+      - {{ turno.numero }}
+    </div>
+    <div class="mensaje">{{ turno.hora_creacion|date:"d M Y, g:i a" }}</div>
+    <div class="mensaje">Gracias por esperar</div>
+    <div class="wifi">📶</div>
+  </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,53 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generar Turno</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="container py-5">
+  <h2 class="mb-4 text-center">🎫 Generar Turno</h2>
+
+  <form method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo de cliente:</label>
+      <select name="tipo" id="tipo" class="form-select">
+        <option value="N">🧑‍🦰 Normal</option>
+        <option value="E">🤰 Embarazada</option>
+        <option value="T">🧓 Tercera Edad</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="fas fa-ticket-alt"></i> Generar Turno
+    </button>
+  </form>
+
+  {% if turno %}
+    <div class="alert alert-success text-center">
+      <h4>🎟️ Tu Turno</h4>
+      <p class="fs-4">
+        {% if turno.tipo == 'N' %}
+          <i class="fas fa-user text-primary"></i>
+        {% elif turno.tipo == 'E' %}
+          <i class="fas fa-baby text-danger"></i>
+        {% elif turno.tipo == 'T' %}
+          <i class="fas fa-person-cane text-warning"></i>
+        {% endif %}
+        <strong>{{ turno.get_tipo_display }} - {{ turno.numero }}</strong>
+      </p>
+      <p>{{ turno.hora_creacion }}</p>
+    </div>
+    <script>window.print();</script>
+  {% endif %}
+  
+</body>
+</html>
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">

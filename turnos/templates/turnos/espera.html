@@ -1,0 +1,37 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Turnos en Espera</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="container py-5">
+  <h2 class="mb-4 text-center">⏳ Turnos en Espera</h2>
+  <ul class="list-group">
+    {% for t in turnos %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {% if t.tipo == 'N' %}
+          <i class="fas fa-user text-primary"></i>
+        {% elif t.tipo == 'E' %}
+          <i class="fas fa-baby text-danger"></i>
+        {% elif t.tipo == 'T' %}
+          <i class="fas fa-person-cane text-warning"></i>
+        {% endif %}
+        <span>{{ t.get_tipo_display }} - {{ t.numero }}</span>
+      </li>
+    {% empty %}
+      <li class="list-group-item text-muted text-center">No hay turnos en espera</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+

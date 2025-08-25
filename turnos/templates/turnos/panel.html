@@ -1,0 +1,39 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel de Atención</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="container py-5 text-center">
+  <h2 class="mb-4">📢 Turno Actual</h2>
+
+  {% if turno %}
+    <div class="alert alert-info display-4">
+      {% if turno.tipo == 'N' %}
+        <i class="fas fa-user text-primary"></i>
+      {% elif turno.tipo == 'E' %}
+        <i class="fas fa-baby text-danger"></i>
+      {% elif turno.tipo == 'T' %}
+        <i class="fas fa-person-cane text-warning"></i>
+      {% endif %}
+      {{ turno.get_tipo_display }} - {{ turno.numero }}
+    </div>
+  {% else %}
+    <div class="alert alert-warning fs-4">No hay turnos en espera</div>
+  {% endif %}
+
+  <form method="get">
+    <button type="submit" class="btn btn-success mt-3">
+      <i class="fas fa-chevron-right"></i> Siguiente Turno
+    </button>
+  </form>
+</body>
+</html>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
